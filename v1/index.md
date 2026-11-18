@@ -5,8 +5,12 @@
 ## 読む順番
 
 1. このファイル（index.md）
-2. spec.md … 制作ルールと専用形式（テスト用に簡略化したもの）
-3. sample.md … 形式に適合したサンプルシナリオ
+2. spec.md … 制作ルールと専用形式（テスト用に簡略化したもの）\
+   &#x20;  [https://raw.githubusercontent.com/KarakawaBond/ai-spec-fetch-test/main/v1/spec.md](https://raw.githubusercontent.com/KarakawaBond/ai-spec-fetch-test/main/v1/spec.md)
+3. sample.md … 形式に適合したサンプルシナリオ\
+   &#x20;  [https://raw.githubusercontent.com/KarakawaBond/ai-spec-fetch-test/main/v1/sample.md](https://raw.githubusercontent.com/KarakawaBond/ai-spec-fetch-test/main/v1/sample.md)
+
+※参照先は必ず完全なURLで記載すること。ファイル名だけだと、URLを推測して開けないAI（Claude等）が取得できない（2026-11-18 の調査で判明）。
 
 ## 重要ルール（要約）
 
