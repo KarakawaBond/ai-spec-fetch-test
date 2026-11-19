@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>AI向け仕様書（テスト用ダミー・単一ファイル版 test-0.1）</title>
+</head>
+<body>
+<h1>AI向け仕様書（テスト用ダミー・単一ファイル版 test-0.1）</h1>
+<p>実現可能性調査用に、index／spec／sample を1ファイルへ統合した版です。
+参照ファイルをたどれないAIでも、このファイル1つで完結するようにしています。</p>
+<h2>重要ルール</h2>
+<ul>
+<li>制作に必要な情報が不足していれば利用者に質問する。ただし、この会話ですでに判明していることは聞き直さない</li>
+<li>構成案を利用者に提示し、確認が取れてからシナリオを生成する</li>
+<li>利用者が文章をそのまま渡した場合は、言い換えずにそのままシナリオへ入れる</li>
+<li>最終成果物は下記の専用形式どおりに、JSONのみをコードブロックで出力する</li>
+<li>このファイルが読めない場合は、推測で進めず、利用者にファイルの添付を依頼する</li>
+</ul>
+<h2>専用形式</h2>
+<p>JSONで、次のフィールドだけを使うこと。余分なフィールドは入れない。</p>
+<table>
+<thead>
+<tr>
+<th>フィールド</th>
+<th>型</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formatVersion</td>
+<td>文字列</td>
+<td>"test-0.1" 固定</td>
+</tr>
+<tr>
+<td>title</td>
+<td>文字列</td>
+<td>動画タイトル</td>
+</tr>
+<tr>
+<td>target</td>
+<td>文字列</td>
+<td>対象者（例：小学校高学年）</td>
+</tr>
+<tr>
+<td>durationSec</td>
+<td>数値</td>
+<td>尺の目安（秒）</td>
+</tr>
+<tr>
+<td>bgm</td>
+<td>文字列または null</td>
+<td>BGMの雰囲気を表すID（例："bright"、"calm"、"serious"）。不要なら null</td>
+</tr>
+<tr>
+<td>lines</td>
+<td>配列</td>
+<td>セリフの並び。各要素は speaker と text</td>
+</tr>
+</tbody>
+</table>
+<p>lines の各要素：</p>
+<table>
+<thead>
+<tr>
+<th>フィールド</th>
+<th>型</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>speaker</td>
+<td>文字列</td>
+<td>"A" または "B"（二人組の掛け合い）</td>
+</tr>
+<tr>
+<td>text</td>
+<td>文字列</td>
+<td>セリフ本文。そのまま読み上げられる文章</td>
+</tr>
+</tbody>
+</table>
+<h2>制作ルール</h2>
+<ul>
+<li>セリフは二人（A・B）の掛け合いで構成する</li>
+<li>利用者がそのまま使うよう指定した文章は、言い換えずに text へ入れる</li>
+<li>尺の目安に収まる分量を意識する（日本語で概ね1分あたり250字程度が目安）</li>
+<li>生成前に構成案（タイトル・対象者・尺・流れ）を提示し、利用者の確認を取る</li>
+<li>生成時はJSONのみをコードブロックで出力し、前後に説明文を付けない</li>
+</ul>
+<h2>サンプル</h2>
+<pre><code class="language-json">{
+  &quot;formatVersion&quot;: &quot;test-0.1&quot;,
+  &quot;title&quot;: &quot;雨の日の安全な帰り道&quot;,
+  &quot;target&quot;: &quot;小学校低学年&quot;,
+  &quot;durationSec&quot;: 120,
+  &quot;bgm&quot;: &quot;calm&quot;,
+  &quot;lines&quot;: [
+    { &quot;speaker&quot;: &quot;A&quot;, &quot;text&quot;: &quot;雨の日は、傘で前が見えにくくなるよね。&quot; },
+    { &quot;speaker&quot;: &quot;B&quot;, &quot;text&quot;: &quot;ほんと。だから横断歩道では一度止まって、左右をよく見るんだ。&quot; },
+    { &quot;speaker&quot;: &quot;A&quot;, &quot;text&quot;: &quot;水たまりも滑りやすいから、走らないことも大事だね。&quot; }
+  ]
+}
+</code></pre>
+<h2>版</h2>
+<ul>
+<li>仕様版： test-0.1</li>
+<li>対応する成果物の formatVersion は "test-0.1" とすること</li>
+</ul>
+</body>
+</html>
